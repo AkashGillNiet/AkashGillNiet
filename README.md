@@ -1,7 +1,6 @@
-- 👋 Hi, I’m @AkashGillNiet
+- 👋 Hi, I’m Akash Gill 
 - 👀 I’m interested in anything 
 - 🌱 I’m currently learning anything 
 - 💞️ I’m looking to collaborate on anything
 - 😄 Pronouns: Kash
-- ⚡ Fun fact: This website made without knowledge 
-
+- ⚡ Fun fact: something hide in the name 
