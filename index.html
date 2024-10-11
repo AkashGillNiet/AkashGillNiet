@@ -3,77 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niet Sports is Live</title>
+    <title>Button with Video Stream</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #1c1c1c; /* Light black background */
-            color: white;
-        }
-
-        .header {
-            background-color: #333;
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
         .container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 20px;
         }
-
         .card {
-            background-color: #444;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 150px;
             text-align: center;
-            width: 200px;
-            position: relative;
         }
-
-        .card img {
+        img {
             width: 100px;
             height: 100px;
-            border-radius: 50%;
-            border: 5px solid #666;
         }
-
-        .card button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+        button {
+            padding: 10px 15px;
+            font-size: 14px;
+            margin-top: 10px;
             cursor: pointer;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
         }
-
-        .card button:hover {
-            background-color: #0056b3;
+        #video-player {
+            width: 100%;
+            max-width: 640px;
+            margin: 20px auto;
+            display: none; /* Hidden by default */
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        Niet Sports is Live
-    </div>
+    <h1>Live Stream Player</h1>
+    <!-- Video player -->
+    <video id="video-player" controls></video>
 
     <div class="container">
-        <!-- Repeat this block 10 times with different content -->
         <div class="card">
-            <img src="FanCode_logo.svg.png" alt="Image 1">
-            <button onclick="playStream('https://dai.google.com/ssai/event/2Pyg58-US5-T1xCBDPg1Zw/master.m3u8')">FANCODE</button>
+            <img src="https://via.placeholder.com/100" alt="Image 1">
+            <button onclick="playStream('https://dai.google.com/ssai/event/2Pyg58-US5-T1xCBDPg1Zw/master.m3u8')">FanCode Stream</button>
         </div>
         <div class="card">
             <img src="https://via.placeholder.com/100" alt="Image 2">
@@ -112,6 +82,32 @@
             <button>Button 10</button>
         </div>
     </div>
+
+    <!-- Include hls.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+        function playStream(streamUrl) {
+            const video = document.getElementById('video-player');
+            video.style.display = 'block'; // Show the video player
+
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(streamUrl);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                // For Safari browsers that support HLS natively
+                video.src = streamUrl;
+                video.addEventListener('loadedmetadata', function() {
+                    video.play();
+                });
+            } else {
+                alert('HLS is not supported in this browser.');
+            }
+        }
+    </script>
 
 </body>
 </html>
