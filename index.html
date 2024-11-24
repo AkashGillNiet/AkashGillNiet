@@ -63,7 +63,7 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            background: linear-gradient(135deg, #1abc9c, #16a085); /* Teal-blue gradient */
             color: #fff;
         }
 
@@ -93,30 +93,56 @@
             width: 100%;
         }
 
+        /* Updated Channel Button Color */
         button {
-            background-color: #8e44ad;
+            background-color: #e67e22; /* Orange color */
             color: white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         button:hover {
-            background-color: #9b59b6;
+            background-color: #d35400; /* Darker orange */
             transform: scale(1.05);
         }
 
+        /* Lighter background for below button section */
+        .card-button {
+            background-color: #f5b041; /* Soft light orange */
+            color: #333;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        /* Updated Telegram Button Color */
         .telegram-button {
-            background-color: #0088cc; /* Telegram blue color */
+            background-color: #2980b9; /* Telegram color */
             color: white;
             text-decoration: none;
             display: inline-block;
-            width: 100%;
             text-align: center;
+            width: auto; /* Make sure the width is not stretched */
+            margin: 10px 0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .telegram-button:hover {
-            background-color: #007bb5;
+            background-color: #1f6fa4; /* Darker blue */
             transform: scale(1.05);
+        }
+
+        /* Black background for the area below Telegram Button */
+        .telegram-footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
         }
 
         /* Responsive Design */
@@ -154,8 +180,12 @@
 
         <div class="card">
             <!-- Telegram Button -->
-            <a href="https://t.me/YourTelegramLink" class="telegram-button" target="_blank">Join on Telegram</a>
+            <a href="https://t.me/SportsLiveLink18" class="telegram-button" target="_blank">Join on Telegram</a>
         </div>
+    </div>
+
+    <div class="telegram-footer">
+        <p>&copy; 2024 Live Stream by Niet. All Rights Reserved.</p>
     </div>
 
     <script>
