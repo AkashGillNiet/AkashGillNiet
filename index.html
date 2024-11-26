@@ -42,7 +42,7 @@
             margin: 20px auto;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            display: block; /* Show video by default */
+            display: block;
         }
 
         /* Container for cards */
@@ -63,7 +63,7 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: linear-gradient(135deg, #1abc9c, #16a085); /* Teal-blue gradient */
+            background: linear-gradient(135deg, #1abc9c, #16a085);
             color: #fff;
         }
 
@@ -81,7 +81,7 @@
         }
 
         /* Button Styling */
-        button, .telegram-button {
+        button {
             padding: 14px 24px;
             font-size: 18px;
             margin-top: 20px;
@@ -91,39 +91,24 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
             font-weight: bold;
             width: 100%;
-        }
-
-        /* Updated Channel Button Color */
-        button {
-            background-color: #e67e22; /* Orange color */
+            background-color: #e67e22;
             color: white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         button:hover {
-            background-color: #d35400; /* Darker orange */
+            background-color: #d35400;
             transform: scale(1.05);
         }
 
-        /* Lighter background for below button section */
-        .card-button {
-            background-color: #f5b041; /* Soft light orange */
-            color: #333;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-
-        /* Updated Telegram Button Color */
+        /* Telegram Button */
         .telegram-button {
-            background-color: #2980b9; /* Telegram color */
+            background-color: #2980b9;
             color: white;
             text-decoration: none;
             display: inline-block;
             text-align: center;
-            width: auto; /* Make sure the width is not stretched */
+            width: auto;
             margin: 10px 0;
             padding: 12px 20px;
             border-radius: 8px;
@@ -132,7 +117,7 @@
         }
 
         .telegram-button:hover {
-            background-color: #1f6fa4; /* Darker blue */
+            background-color: #1f6fa4;
             transform: scale(1.05);
         }
 
@@ -167,19 +152,32 @@
     <video id="video-player" controls></video>
 
     <div class="container">
-        <!-- Stream Cards -->
+        <!-- Original Channels -->
         <div class="card">
             <img src="https://raw.githubusercontent.com/AkashGillNiet/NietSports/refs/heads/main/images%20(6).jpeg" alt="TNT SPORTS LIVE">
             <button onclick="playStream('https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/wf8usag51e/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd')">TNT SPORTS LIVE</button>
         </div>
-
         <div class="card">
             <img src="https://raw.githubusercontent.com/AkashGillNiet/NietSports/refs/heads/main/images%20(7).jpeg" alt="Star Sports">
             <button onclick="playStream('https://vkvsd176.okcdn.ru/hls/7521560431146.m3u8/sig/YxczNHve7f8/expires/1732458457125/srcIp/65.20.74.215/urls/45.136.20.45/clientType/14/srcAg/CHROME_ANDROID/mid/8817298385706/7521560431146_low/index.m3u8')">Star Sports हिंदी</button>
         </div>
 
+        <!-- New Channels -->
         <div class="card">
-            <!-- Telegram Button -->
+            <img src="https://via.placeholder.com/270x150?text=Sony+Sports+Live" alt="Sony Sports Live">
+            <button onclick="playStream('https://example.com/sony-sports.m3u8')">Sony Sports Live</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/270x150?text=ESPN+Live" alt="ESPN Live">
+            <button onclick="playStream('https://example.com/espn-live.m3u8')">ESPN Live</button>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/270x150?text=Cricket+World+Cup" alt="Cricket World Cup">
+            <button onclick="playStream('https://example.com/cricket-worldcup.m3u8')">Cricket World Cup</button>
+        </div>
+
+        <!-- Telegram Button -->
+        <div class="card">
             <a href="https://t.me/SportsLiveLink18" class="telegram-button" target="_blank">Join on Telegram</a>
         </div>
     </div>
@@ -193,7 +191,9 @@
             var player = document.getElementById('video-player');
             player.style.display = 'block'; // Show the video player
             player.src = url; // Set the video URL
-            player.play(); // Start playing the video
+            player.play().catch((error) => {
+                console.error("Error playing the video:", error);
+            });
         }
     </script>
 
